@@ -10,7 +10,7 @@
             int numeroValor = Convert.ToInt32(Console.ReadLine());
 
             string valorX = "X ";
-            int contador = 0;
+            int contador = -1;
 
             if (numeroValor % 2 == 0)
             {
@@ -33,7 +33,20 @@
 
                     contador = contador + 2;
 
+
+
                 }
+
+                string NovaVariavel = valorX;
+
+                for (int j = contador; j >= numeroValor - 1; j--)
+                {
+                    NovaVariavel = "   " + NovaVariavel.Remove(contador + 1);
+                    Console.WriteLine(NovaVariavel);
+                    NovaVariavel = NovaVariavel.Remove(1, 1);
+                    contador = contador - 2;
+                }
+
 
             }
 
