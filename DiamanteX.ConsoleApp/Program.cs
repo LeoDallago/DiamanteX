@@ -7,12 +7,15 @@
             Console.WriteLine("Diamante X");
 
             Console.WriteLine("Por favor, Informe um numero");
-            int numeroValor = Convert.ToInt32(Console.ReadLine());
+            int tamanhoDiamante = Convert.ToInt32(Console.ReadLine());
 
-            string valorX = "X ";
-            int contador = -1;
+            Console.WriteLine("Por favor, informe o estilo do diamante");
+            string estilo = Console.ReadLine();
 
-            if (numeroValor % 2 == 0)
+            int quantidadeDeX = 1;
+            int contador = 0;
+
+            if (tamanhoDiamante % 2 == 0)
             {
                 Console.WriteLine("Numero invalido, Por favor informe um numero IMPAR");
             }
@@ -20,37 +23,43 @@
             else
             {
 
-                while (contador <= numeroValor)
+                for (int linha = 0; linha < (tamanhoDiamante - 1) / 2; linha++)
                 {
+                    FazLinha(tamanhoDiamante, quantidadeDeX, contador,estilo);
+                    contador++;
+                    quantidadeDeX += 2;
 
-                    for (int i = contador; i < numeroValor - 1 / 2; i++)
-                    {
-                        Console.Write(" ");
-                    }
-
-                    Console.WriteLine(valorX);
-                    valorX = valorX + "X X ";
-
-                    contador = contador + 2;
-
-
+                    Console.WriteLine();
 
                 }
 
-                string NovaVariavel = valorX;
-
-                for (int j = contador; j >= numeroValor - 1; j--)
+                for (int linha = 0; linha <= (tamanhoDiamante - 1) / 2; linha++)
                 {
-                    NovaVariavel = "   " + NovaVariavel.Remove(contador + 1);
-                    Console.WriteLine(NovaVariavel);
-                    NovaVariavel = NovaVariavel.Remove(1, 1);
-                    contador = contador - 2;
+                    FazLinha(tamanhoDiamante, quantidadeDeX, contador,estilo);
+                    contador--;
+                    quantidadeDeX -= 2;
+
+                    Console.WriteLine();
                 }
 
 
             }
 
             Console.ReadLine();
+        }
+
+        private static void FazLinha(int tamanhoDiamante, int quantidadeDeX, int contador,string estilo)
+        {
+            for (int espaco = contador; espaco < (tamanhoDiamante - 1) / 2; espaco++)
+            {
+                Console.Write(" ");
+            }
+
+
+            for (int X = 0; X < quantidadeDeX; X++)
+            {
+                Console.Write(estilo);
+            }
         }
     }
 }
